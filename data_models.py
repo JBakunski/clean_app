@@ -7,8 +7,7 @@ Base = declarative_base()
 
 class Station(Base):
     __tablename__ = 'stations'
-    id = Column(Integer, primary_key=True)
-    station_identifier = Column(String, unique=True)
+    id = Column(String, primary_key=True)
     latitiude = Column(Float)
     longitude = Column(Float)
     elevation = Column(Float)
@@ -17,14 +16,14 @@ class Station(Base):
     state = Column(String)
     
     def __repr__(self):
-        return f"ID:{self.station_identifier}, Name:{self.name}, State:{self.state}, Country:{self.country}"
+        return f"ID:{self.id}, Name:{self.name}, State:{self.state}, Country:{self.country}"
     
 
 
 class Measure(Base):
     __tablename__ = 'measures'
     id = Column(Integer, primary_key=True)
-    station_id = Column(String, ForeignKey('stations.station_identifier'))
+    station_id = Column(String, ForeignKey('stations.id'))
     date = Column(Date)
     precip = Column(Float)
     tobs = Column(Integer)
