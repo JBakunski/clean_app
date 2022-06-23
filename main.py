@@ -1,4 +1,4 @@
-import os.path
+import os
 import data
 import presentation
 from data_models import Station, Measure, Base
